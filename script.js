@@ -1,4 +1,8 @@
-function beforesubmit(){
+let captchachecked = false;
+function beforesubmit(event){
+    if(captchachecked){
+
+    
     let outputdate = document.querySelector(".outputdate");
     let inputdate = document.querySelector(".inputdate");
 
@@ -10,6 +14,11 @@ function beforesubmit(){
 
 
 }
+else{
+    alert("Please Check the reCAPTCHA box to submit the lead")
+    event.preventDefault();
+}
+}
 function timestamp() 
 { var response = document.getElementById("g-recaptcha-response"); 
 if (response == null || response.value.trim() == "") 
@@ -20,3 +29,7 @@ JSON.stringify(elems);
 }
  } 
 setInterval(timestamp, 500);
+
+function captchasuccess(){
+    captchachecked = true;
+}
